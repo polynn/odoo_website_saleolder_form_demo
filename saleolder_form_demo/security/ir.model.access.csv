@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saleolder_form_demo_saleolder_form_demo,saleolder_form_demo.saleolder_form_demo,model_saleolder_form_demo_saleolder_form_demo,base.group_user,1,1,1,1

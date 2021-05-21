@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<template id="orders">
+    <t t-call="website.layout">        
+        <div class="container">
+            <div>
+            <a t-attf-href="/sale_order/create" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus-circle">Create Order</i>
+                                
+            </a>
+            </div>
+            
+            <t t-foreach="orders" t-as="order">
+                 <div class="card-body" id="card_body">
+                        <h3 t-field="order.name"/>
+                        <div t-field="order.partner_id" class="text-muted"/>                       
+                    </div>
+            </t>
+        </div>    
+    </t>
+</template>
+
+<template id="order_create_form" name="Sale Order Form">
+    <t t-call="website.layout">
+        <div class="container mt32">
+            <t t-if="submitted">
+                <h3 class="alert alert-success mt16 mb16">
+                    <i class="fa fa-thumbs-up"/>
+                    Order submitted successfully
+                </h3>
+            </t>
+           
+            <div class="row mt16">
+                <div class="col-6">
+                    <form method="post">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="form-group">
+                            <label>PriceList</label>
+                            <select class="form-control" name="pricelist_id">
+                                <t t-foreach="pricelists" t-as="pricelist">
+                                    <option t-att-value="pricelist.id">
+                                        <t t-esc="pricelist.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+</odoo>
